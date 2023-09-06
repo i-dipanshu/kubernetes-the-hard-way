@@ -1,29 +1,17 @@
-> This tutorial is a modified version of the original developed by [Kelsey Hightower](https://github.com/kelseyhightower/kubernetes-the-hard-way).
 
-# Kubernetes The Hard Way On VirtualBox
+# Kubernetes The Hard Way - Local Setup
 
-This tutorial walks you through setting up Kubernetes the hard way on a local machine using VirtualBox.
-This guide is not for people looking for a fully automated command to bring up a Kubernetes cluster.
-If that's you then check out [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine), or the [Getting Started Guides](http://kubernetes.io/docs/getting-started-guides/).
+> This project draws inspiration and closely follows [kubernetes-the-hard-way](https://github.com/mmumshad/kubernetes-the-hard-way). The entire repository has been modified to align with my implementation and understanding of each concept.
 
-Kubernetes The Hard Way is optimized for learning, which means taking the long route to ensure you understand each task required to bootstrap a Kubernetes cluster.
+The goal of this project is to bootstrap a Kubernetes cluster locally on our machine using Vagrant and VirtualBox. It offers an extensive learning experience by taking the long route to ensure understanding of every task required to establish a Kubernetes cluster.
 
-This tutorial is a modified version of the original developed by [Kelsey Hightower](https://github.com/kelseyhightower/kubernetes-the-hard-way).
-While the original one uses GCP as the platform to deploy kubernetes,  we use VirtualBox and Vagrant to deploy a cluster on a local machine. If you prefer the cloud version, refer to the original one [here](https://github.com/kelseyhightower/kubernetes-the-hard-way)
+The project focuses on minute details; missing even one tiny step along the way can lead to issues.
 
-> The results of this tutorial should not be viewed as production ready, and may receive limited support from the community, but don't let that stop you from learning!
-
-Please note that with this particular challenge, it is all about the minute detail. If you miss one tiny step anywhere along the way, it's going to break!
-
-Always run the `cert_verify` script at the places it suggests, and always ensure you are on the correct node when you do stuff. If `cert_verify` shows anything in red, then you have made an error in a previous step. For the master node checks, run the check on `master-1` and on `master-2`
-
-## Target Audience
-
-The target audience for this tutorial is someone planning to support a production Kubernetes cluster and wants to understand how everything fits together.
+> Always execute the `cert_verify` script where it's suggested, and ensure that you are on the correct node when performing actions. If `cert_verify` displays anything in red, it indicates an error in a previous step. For master node checks, run the check on both `master-1` and `master-2`
 
 ## Cluster Details
 
-Kubernetes The Hard Way guides you through bootstrapping a highly available Kubernetes cluster with end-to-end encryption between components and RBAC authentication.
+This project bootstraps a highly available Kubernetes cluster with end-to-end encryption between components and RBAC authentication.
 
 * [Kubernetes](https://github.com/kubernetes/kubernetes) 1.24.3
 * [Container Runtime](https://github.com/containerd/containerd) 1.5.9
@@ -32,15 +20,15 @@ Kubernetes The Hard Way guides you through bootstrapping a highly available Kube
 * [etcd](https://github.com/coreos/etcd) v3.5.3
 * [CoreDNS](https://github.com/coredns/coredns) v1.9.4
 
-### Node configuration
+### Node Configuration
 
-We will be building the following:
+We will build the following components:
 
-* Two control plane nodes (`master-1` and `master-2`) running the control plane components as operating system services.
-* Two worker nodes (`worker-1` and `worker-2`)
-* One loadbalancer VM running HAProxy to balance requests between the two API servers.
+* Two control plane nodes (`master-1` and `master-2`) running control plane components as operating system services.
+* Two worker nodes (`worker-1` and `worker-2`).
+* One `loadbalancer` VM running HAProxy to balance requests between the two API servers.
 
-## Labs
+## Implementation
 
 * [Prerequisites](docs/01-prerequisites.md)
 * [Provisioning Compute Resources](docs/02-compute-resources.md)
